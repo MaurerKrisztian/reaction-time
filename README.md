@@ -3,6 +3,6 @@ reaction time test
 
 ### Project setup:
 ```
-npm inatall
+npm install
 npm start
 ```

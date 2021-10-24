@@ -1,5 +1,6 @@
 import {Timer} from "./Timer";
 import {Statistics} from "./Statistics";
+import {Modal} from "./Components/Modal/Modal";
 
 export interface IReactionTimeOption {
     minTime: number,
@@ -13,7 +14,10 @@ export interface IReactionTimeOption {
 export class ReactionTimeGame {
     enableTimerStop: boolean = false;
 
-    constructor(private readonly timer: Timer, private readonly statistics: Statistics, private readonly options: IReactionTimeOption) {
+    constructor(private readonly timer: Timer,
+                private readonly statistics: Statistics,
+                private readonly modal: Modal,
+                private readonly options: IReactionTimeOption) {
         this.init()
     }
 
@@ -34,6 +38,7 @@ export class ReactionTimeGame {
         document.body.onkeydown = (e) => {
             if (e.keyCode === spaceKeyCode && this.enableTimerStop) {
                 this.timer.stopTimer();
+                this.modal.open("Your time is: <b>" + this.timer.getDiffMs() + "</b> ms.")
                 this.statistics.display(this.timer.lastTimes);
                 this.enableTimerStop = false;
             } else if (e.keyCode === spaceKeyCode && !this.enableTimerStop) {

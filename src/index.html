@@ -3,10 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="Components/Modal/Modal.css">
 </head>
 <body>
-press the space when color is green
-<button id="start">Start</button>
-<div id="timeStat"></div>
+
+<div id="top-bar">
+    <p id="tutorial">Press space when the color is green. Press start when you are ready!</p>
+
+    <span id="start" class='start-btn'>START</span>
+    <div id="timeStat"></div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="message"></p>
+    </div>
+
+</div>
+
 </body>
 </html>

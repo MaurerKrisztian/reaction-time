@@ -5,6 +5,11 @@
     text-align: center;
 }
 
+#color-reaction-game {
+    min-height: 90vh;
+    min-width: 90vh;
+}
+
 .glass {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;

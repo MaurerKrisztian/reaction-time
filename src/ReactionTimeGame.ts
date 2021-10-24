@@ -37,14 +37,25 @@ export class ReactionTimeGame {
         const spaceKeyCode = 32;
         document.body.onkeydown = (e) => {
             if (e.keyCode === spaceKeyCode && this.enableTimerStop) {
-                this.timer.stopTimer();
-                this.modal.open("Your time is: <b>" + this.timer.getDiffMs() + "</b> ms.")
-                this.statistics.display(this.timer.lastTimes);
-                this.enableTimerStop = false;
-            } else if (e.keyCode === spaceKeyCode && !this.enableTimerStop) {
-                // invalidate();
+                this.handleStopEvent()
             }
         }
+        document.getElementById("color-reaction-game").onclick = () => {
+            this.handleStopEvent()
+        };
+        document.getElementById("color-reaction-game").ontouchend = () => {
+            this.handleStopEvent()
+        };
+    }
+
+    handleStopEvent() {
+        if (!this.enableTimerStop) {
+            return
+        }
+        this.timer.stopTimer();
+        this.modal.open("Your time is: <b>" + this.timer.getDiffMs() + "</b> ms.")
+        this.statistics.display(this.timer.lastTimes);
+        this.enableTimerStop = false;
     }
 
     getRandomBetween(min: number, max: number): number {
